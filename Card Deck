@@ -1,0 +1,53 @@
+import random
+
+hearts = ["Ace of Hearts", "Two of Hearts", "Three of Hearts",
+          "Four of Hearts", "Five of Hearts", "Six of Hearts",
+          "Seven of Hearts", "Eight of Hearts", "Nine of Hearts",
+          "Ten of Hearts", "Jack of Hearts", "Queen of Hearts",
+          "King of Hearts"]
+diamonds = ["Ace of Diamonds", "Two of Diamonds", "Three of Diamonds",
+            "Four of Diamonds", "Five of Diamonds", "Six of Diamonds",
+            "Seven of Diamonds", "Eight of Diamonds", "Nine of Diamonds",
+            "Ten of Diamonds", "Jack of Diamonds", "Queen of Diamonds",
+            "King of Diamonds"]
+clubs = ["Ace of Clubs", "Two of Clubs", "Three of Clubs",
+         "Four of Clubs", "Five of Clubs", "Six of Clubs",
+         "Seven of Clubs", "Eight of Clubs", "Nine of Clubs",
+         "Ten of Clubs", "Jack of Clubs", "Queen of Clubs",
+         "King of Clubs"]
+spades = ["Ace of Spades", "Two of Spades", "Three of Spades",
+          "Four of Spades", "Five of Spades", "Six of Spades",
+          "Seven of Spades", "Eight of Spades", "Nine of Spades",
+          "Ten of Spades", "Jack of Spades", "Queen of Spades",
+          "King of Spades"]
+
+fullDeck = hearts + diamonds + clubs + spades
+jokers = ['Red Joker', 'Black Joker']
+drawnPile = []
+
+print("—  Enter any character to draw a card \n"
+      "— 'Reshuffle' to reshuffle the deck (This is case-sensitive)\n"
+      "— 'Joker' to add jokers into the main deck (This is also case-sensitive)\n"
+      "—  ENTER (as in, hit enter) to exit")
+choice = input(": ")
+while choice != '':
+
+    if choice == 'Reshuffle':
+        fullDeck += drawnPile
+        drawnPile.clear()
+
+    if choice == 'Joker':
+        fullDeck += jokers
+
+    # draw card
+    print("--------------------")
+    card = random.randrange(len(fullDeck))
+    print("—— " + fullDeck[card])
+
+    # transfer card to the drawn-card pile
+    drawnPile.append(fullDeck[card])
+    fullDeck.remove((fullDeck[card]))
+
+    print("Cards left in deck: " + str(len(fullDeck)))
+    print("--------------------")
+    choice = input(": ")
