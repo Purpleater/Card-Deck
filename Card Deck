@@ -39,6 +39,10 @@ while choice != '':
     if choice == 'Joker':
         fullDeck += jokers
 
+    if len(fullDeck) == 0:
+        fullDeck += drawnPile
+        drawnPile.clear()
+
     # draw card
     print("--------------------")
     card = random.randrange(len(fullDeck))
@@ -51,3 +55,4 @@ while choice != '':
     print("Cards left in deck: " + str(len(fullDeck)))
     print("--------------------")
     choice = input(": ")
+
